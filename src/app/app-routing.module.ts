@@ -5,6 +5,8 @@ import { CreateCoursesComponent } from './create-courses/create-courses.componen
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { UpdateCoursesComponent } from './update-courses/update-courses.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { AuthGaurdService } from './service/auth-gaurd.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'courses', pathMatch: 'full' },
@@ -13,8 +15,7 @@ const routes: Routes = [
   { path: 'update/:id', component: UpdateCoursesComponent },
   { path: 'details/:id', component: CoursesDetailsComponent },
   {path: 'login', component: LoginComponent},
-  {path: '', component: LoginComponent},
-  {path: 'logout', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent, canActivate:[AuthGaurdService]},
 ];
 
 @NgModule({
