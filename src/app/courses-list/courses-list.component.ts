@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent implements OnInit {
-  courses: Observable<Courses[]>;
+  courses!: Observable<Courses[]>;
 
   constructor(private coursesService: CoursesService,
     private router: Router) {}
@@ -37,6 +37,10 @@ export class CoursesListComponent implements OnInit {
 
   coursesDetails(id: number){
     this.router.navigate(['details', id]);
+  }
+
+  updateCourses(id:number){
+    this.router.navigate(['update',id]);
   }
 
 }

@@ -9,8 +9,8 @@ import { CoursesService } from '../courses.service';
   styleUrls: ['./update-courses.component.css']
 })
 export class UpdateCoursesComponent implements OnInit {
-  id: number;
-  courses: Courses;
+  id!: number;
+  courses!: Courses;
 
   constructor(private route: ActivatedRoute,private router: Router,
     private coursesService: CoursesService) { }
@@ -40,7 +40,7 @@ export class UpdateCoursesComponent implements OnInit {
     }
   
     gotoList() {
-      this.router.navigate(['/employees']);
+      this.router.navigate(['/courses']);
     }
 
 }

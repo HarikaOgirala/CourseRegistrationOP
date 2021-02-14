@@ -6,8 +6,11 @@ import { AppComponent } from './app.component';
 import { CreateCoursesComponent } from './create-courses/create-courses.component';
 import { CoursesDetailsComponent } from './courses-details/courses-details.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UpdateCoursesComponent } from './update-courses/update-courses.component';
+import { LoginComponent } from './login/login.component';
+import { HttpinterceptorService } from './httpinterceptor.service';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import { UpdateCoursesComponent } from './update-courses/update-courses.componen
     CreateCoursesComponent,
     CoursesDetailsComponent,
     CoursesListComponent,
-    UpdateCoursesComponent
+    UpdateCoursesComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,13 @@ import { UpdateCoursesComponent } from './update-courses/update-courses.componen
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpinterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

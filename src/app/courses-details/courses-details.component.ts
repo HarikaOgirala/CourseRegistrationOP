@@ -11,8 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./courses-details.component.css']
 })
 export class CoursesDetailsComponent implements OnInit {
-  id: number;
-  courses: Courses;
+  id!: number;
+  courses!: Courses;
 
   constructor(private route: ActivatedRoute,private router: Router,
     private coursesService: CoursesService) { }
