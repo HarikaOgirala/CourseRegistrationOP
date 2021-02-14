@@ -10,6 +10,7 @@ import { AuthGaurdService } from './service/auth-gaurd.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'courses', pathMatch: 'full' },
+  { path: 'courses', component: CoursesListComponent, canActivate:[AuthGaurdService] },
   { path: 'courses', component: CoursesListComponent },
   { path: 'add', component: CreateCoursesComponent },
   { path: 'update/:id', component: UpdateCoursesComponent },
