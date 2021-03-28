@@ -9,10 +9,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGaurdService } from './service/auth-gaurd.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'courses', pathMatch: 'full' },
-  { path: 'courses', component: CoursesListComponent, canActivate:[AuthGaurdService] },
-  { path: 'courses', component: CoursesListComponent },
-  { path: 'add', component: CreateCoursesComponent },
+  { path: '', component: CoursesListComponent, canActivate:[AuthGaurdService] }, 
+  { path: 'add', component: CreateCoursesComponent ,canActivate:[AuthGaurdService] },
   { path: 'update/:id', component: UpdateCoursesComponent },
   { path: 'details/:id', component: CoursesDetailsComponent },
   {path: 'login', component: LoginComponent},
