@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CoursesService {
 
-  private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/courses';
+  private baseUrl = 'http://localhost:8080/registrationop/api/v1/courses';
 
   constructor(private http: HttpClient) { }
 

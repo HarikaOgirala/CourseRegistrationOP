@@ -6,17 +6,29 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Course Name</th>
-            <th>Time</th>
+            <th>CourseNumber</th>
+            <th>CourseName</th>
             <th>Semester</th>
+            <th>Type</th>
+            <th>Pre-requisites</th>
+            <th>Part of Day</th>
+            <th>Time</th>
+            <th>Day</th>
+            <th>Faculty</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let courses of courses | async">
+            <td>{{courses.courseNumber}}</td>
             <td>{{courses.courseName}}</td>
-            <td>{{courses.time}}</td>
             <td>{{courses.semester}}</td>
+            <td>{{courses.type}}</td>
+            <td>{{courses.preRequisites}}</td>
+            <td>{{courses.partOfDay}}</td>
+            <td>{{courses.time}}</td>
+            <td>{{courses.day}}</td>
+            <td>{{courses.faculty}}</td>
             <td><button (click)="deleteCourses(courses.id)" class="btn btn-danger">Delete</button>
                 <button (click)="updateCourses(courses.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
                 <button (click)="coursesDetails(courses.id)" class="btn btn-info" style="margin-left: 10px">Details</button>

@@ -2,19 +2,47 @@
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
+      <label for="name">CourseNumber</label>
+      <input type="text" class="form-control" id="courseNumber" required [(ngModel)]="courses.courseNumber" name="courseNumber">
+    </div>
+    <div class="form-group">
       <label for="name">Course Name</label>
       <input type="text" class="form-control" id="courseName" required [(ngModel)]="courses.courseName" name="courseName">
+    </div>
+    <div class="form-group">
+      <label for="name">Semester</label>
+      <input type="text" class="form-control" id="semester" required [(ngModel)]="courses.semester" name="semester">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Type</label>
+      <input type="text" class="form-control" id="type" required [(ngModel)]="courses.type" name="type">
+    </div>
+    <div class="form-group">
+      <label for="name">Pre-Requisites</label>
+      <input type="text" class="form-control" id="preRequisites" required [(ngModel)]="courses.preRequisites" name="preRequisites">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Part of Day</label>
+      <input type="text" class="form-control" id="partOfDay" required [(ngModel)]="courses.partOfDay" name="partOfDay">
     </div>
 
     <div class="form-group">
       <label for="name">Time</label>
       <input type="text" class="form-control" id="time" required [(ngModel)]="courses.time" name="time">
     </div>
+    <div class="form-group">
+      <label for="name">Day</label>
+      <input type="text" class="form-control" id="day" required [(ngModel)]="courses.day" name="day">
+    </div>
 
     <div class="form-group">
-      <label for="name">Semester</label>
-      <input type="text" class="form-control" id="semester" required [(ngModel)]="courses.semester" name="semester">
+      <label for="name">Faculty</label>
+      <input type="text" class="form-control" id="faculty" required [(ngModel)]="courses.faculty" name="faculty">
     </div>
+
+    
 
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
