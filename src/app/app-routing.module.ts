@@ -7,10 +7,13 @@ import { UpdateCoursesComponent } from './update-courses/update-courses.componen
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGaurdService } from './service/auth-gaurd.service';
+import { RedirectComponentComponent } from './redirect-component/redirect-component.component';
 
 const routes: Routes = [
-  { path: '', component: CoursesListComponent, canActivate:[AuthGaurdService] }, 
-  { path: 'add', component: CreateCoursesComponent ,canActivate:[AuthGaurdService] },
+  { path: '', redirectTo: 'courses', pathMatch: 'full' },
+  { path: 'CourseDetailsService', component:RedirectComponentComponent, pathMatch: 'full' },
+  { path: 'courses', component: CoursesListComponent, canActivate:[AuthGaurdService] }, 
+  { path: 'add', component: CreateCoursesComponent, canActivate:[AuthGaurdService]  },
   { path: 'update/:id', component: UpdateCoursesComponent },
   { path: 'details/:id', component: CoursesDetailsComponent },
   {path: 'login', component: LoginComponent},

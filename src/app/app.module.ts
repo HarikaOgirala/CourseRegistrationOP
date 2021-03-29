@@ -11,6 +11,7 @@ import { UpdateCoursesComponent } from './update-courses/update-courses.componen
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
+import { RedirectComponentComponent } from './redirect-component/redirect-component.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HeaderComponent } from './header/header.component';
     UpdateCoursesComponent,
     LoginComponent,
     LogoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    RedirectComponentComponent
   ],
   imports: [
     BrowserModule,
