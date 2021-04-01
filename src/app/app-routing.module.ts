@@ -11,7 +11,7 @@ import { RedirectComponentComponent } from './redirect-component/redirect-compon
 import { LoginListComponent } from './login-list/login-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'courses', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'CourseDetailsService', component:RedirectComponentComponent, pathMatch: 'full' },
   { path: 'courses', component: CoursesListComponent }, 
   { path: 'add', component: CreateCoursesComponent },
