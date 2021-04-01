@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
 
   private baseUrl = 'http://localhost:8080/registrationop/api/v1/courses';
-
+ 
   constructor(private http: HttpClient) { }
 
   getCourses(id: number): Observable<any> {
@@ -30,4 +31,5 @@ export class CoursesService {
   getCoursesList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
 }

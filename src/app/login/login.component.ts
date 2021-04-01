@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../login.service';
+import { Login } from '../login';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../service/authentication.service';
+
+
 
 @Component({
   selector: 'app-login',
@@ -8,24 +11,41 @@ import { AuthenticationService } from '../service/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  username = 'student'
-  password = ''
-  invalidLogin = false
+  
+  login: Login = new Login();
+  submitted = false;
 
   constructor(private router: Router,
-    private loginservice: AuthenticationService) { }
+    private loginService: LoginService) { }
 
   ngOnInit() {
   }
 
-  checkLogin() {
-    if (this.loginservice.authenticate(this.username, this.password)
-    ) {
-      this.router.navigate([''])
-      this.invalidLogin = false
-    } else
-      this.invalidLogin = true
+  newLogin(): void {
+    this.submitted = false;
+    this.login = new Login();  
+  }
+
+  save() {
+    this.loginService
+    .createLogin(this.login).subscribe((data: any) => {
+      console.log(data)
+      this.login = new Login();
+      this.gotoList();
+    }, 
+      (    error: any) => console.log(error));
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.save();    
+  }
+
+  gotoList() {
+    this.router.navigate(['/loginList']);
   }
 
 }
+
+
+

@@ -9,7 +9,6 @@ export class Courses {
     time!: string;
     day!: string;
     faculty!: string;
-   
     active!: boolean;
 }
 

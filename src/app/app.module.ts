@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
 import { RedirectComponentComponent } from './redirect-component/redirect-component.component';
+import { LoginListComponent } from './login-list/login-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RedirectComponentComponent } from './redirect-component/redirect-compon
     LoginComponent,
     LogoutComponent,
     HeaderComponent,
-    RedirectComponentComponent
+    RedirectComponentComponent,
+    LoginListComponent
   ],
   imports: [
     BrowserModule,

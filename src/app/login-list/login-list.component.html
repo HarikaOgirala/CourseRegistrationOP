@@ -1,0 +1,22 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Login List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let login of login | async">
+            <td>{{login.userName}}</td>
+            <td>{{login.password}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

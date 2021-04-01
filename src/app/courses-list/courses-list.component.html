@@ -10,7 +10,7 @@
             <th>Course Name</th>
             <th>Semester</th>
             <th>Type</th>
-            <th>Pre-requisites</th>
+            <th>Prerequisites</th>
             <th>Part of Day</th>
             <th>Time</th>
             <th>Day</th>
@@ -29,8 +29,7 @@
             <td>{{courses.time}}</td>
             <td>{{courses.day}}</td>
             <td>{{courses.faculty}}</td>
-            <td><button (click)="deleteCourses(courses.id)" class="btn btn-danger">Delete</button>
-                <button (click)="updateCourses(courses.id)" class="btn btn-info" style="margin-left:auto">Update</button>
+            <td><button (click)="deleteCourses(courses.id)" class="btn btn-danger">Deregister</button>
                 <button (click)="coursesDetails(courses.id)" class="btn btn-info" style="margin-left:auto">Details</button>
             </td>
           </tr>
