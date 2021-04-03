@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('inside onsubmit');
     this.submitted = true;
     this.save();    
   }
@@ -46,6 +47,3 @@ export class LoginComponent implements OnInit {
   }
 
 }
-
-
-
