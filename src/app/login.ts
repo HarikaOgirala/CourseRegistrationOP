@@ -1,6 +1,6 @@
 export class Login {
     id!: number;
-    userName!: String;
+    username!: String;
     password!: String;
     active!: boolean;
 }

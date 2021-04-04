@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
+import { AuthenticationService } from '../service/authentication.service';
 import { Login } from '../login';
 import { Router } from '@angular/router';
 
@@ -13,33 +13,48 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   
   login: Login = new Login();
-  submitted = false;
+  invalidLogin = false;
+  username = '';
+  password = '';
+  errorMessage ='';
+  isLoggedIn=false;
 
   constructor(private router: Router,
-    private loginService: LoginService) { }
+    private loginService: AuthenticationService) { }
 
   ngOnInit() {
+    this.isLoggedIn = this.loginService.isUserLoggedIn();
   }
 
   newLogin(): void {
-    this.submitted = false;
+    this.invalidLogin = false;
     this.login = new Login();  
   }
 
-  save() {
-    this.loginService
-    .createLogin(this.login).subscribe((data: any) => {
-      console.log(data)
-      this.login = new Login();
-      this.gotoList();
-    }, 
-      (    error: any) => console.log(error));
+  checkLogin() {
+    (this.loginService.authenticate(this.username, this.password).subscribe(
+      data => {
+        console.log('success login');
+        this.invalidLogin = false
+        localStorage.setItem('currentUser', JSON.stringify(this.username));
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate(['courses']);
+      });
+      },
+      error => {
+        console.log('error login');
+        this.invalidLogin = true;        
+        this.errorMessage="Invalid Credentials";
+      }
+    )
+    );
+
   }
 
   onSubmit() {
     console.log('inside onsubmit');
-    this.submitted = true;
-    this.save();    
+    this.invalidLogin = true;
+    this.checkLogin();    
   }
 
   gotoList() {

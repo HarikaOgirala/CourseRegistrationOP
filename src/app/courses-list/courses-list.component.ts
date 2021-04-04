@@ -22,7 +22,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   reloadData() {
-    this.courses = this.coursesService.getCoursesList();
+   /** this.courses = this.coursesService.getCoursesList(); */
   }
 
   deleteCourses(id: number) {
