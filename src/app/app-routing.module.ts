@@ -6,6 +6,7 @@ import { CoursesListComponent } from './courses-list/courses-list.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RedirectComponentComponent } from './redirect-component/redirect-component.component';
+import { CoursopIframeComponent } from './coursop-iframe/coursop-iframe.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'details/:id', component: CoursesDetailsComponent },
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'courseop', component:CoursopIframeComponent}
 ];
 
 @NgModule({

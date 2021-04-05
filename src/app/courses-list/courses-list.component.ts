@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesDetailsComponent } from '../courses-details/courses-details.component';
 import { Observable } from "rxjs";
 import { CoursesService } from "../courses.service";
 import { Courses } from "../courses";
@@ -12,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class CoursesListComponent implements OnInit {
   courses!: Observable<Courses[]>;
+  
+  isLoggedIn$!: Observable<boolean>;
 
   constructor(private coursesService: CoursesService,
     private router: Router) {}
@@ -22,7 +23,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   reloadData() {
-   /** this.courses = this.coursesService.getCoursesList(); */
+    this.courses = this.coursesService.getCoursesList();
   }
 
   deleteCourses(id: number) {

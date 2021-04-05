@@ -19,8 +19,20 @@ export class AuthenticationService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
 
+  private userName = new BehaviorSubject<String>('');
+
+  private password = new BehaviorSubject<String>('');
+
   get isLoggedIn() {
     return this.loggedIn.asObservable();
+  }
+
+  get getUserName() {
+    return this.userName.asObservable();
+  }
+
+  get getPassword() {
+    return this.password.asObservable();
   }
   
   constructor(private http: HttpClient,
@@ -39,6 +51,8 @@ export class AuthenticationService {
      map(
        userData => {
         this.loggedIn.next(true);
+        this.userName.next(username);
+        this.password.next(password);
         sessionStorage.setItem('username',username);
         return userData;
        }
@@ -49,6 +63,8 @@ export class AuthenticationService {
   logOut() {
     sessionStorage.removeItem('username')
     this.loggedIn.next(false);
+    this.userName.next('');
+    this.userName.next('');
     this.router.navigate(['/login']);
   }
 }

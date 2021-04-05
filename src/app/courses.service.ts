@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { AuthenticationService } from './service/authentication.service';
 
 
 @Injectable({
@@ -9,8 +12,12 @@ import { Observable } from 'rxjs';
 export class CoursesService {
 
   private baseUrl = 'http://localhost:8080/registrationop/api/v1/courses';
+
+  username :String = '';
+  password :String = '';
+  
  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authenticateService : AuthenticationService) { }
 
   getCourses(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
@@ -29,7 +36,26 @@ export class CoursesService {
   }
 
   getCoursesList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    this.authenticateService.getUserName
+            .pipe( first()) 
+            .subscribe((uname) => {
+                this.username = uname;
+            });
+    this.authenticateService.getPassword
+            .pipe( first()) 
+            .subscribe((pw) => {
+                this.password = pw;
+            });
+    console.log(this.username);
+    console.log(this.password);
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
+    return this.http.get(this.baseUrl,{headers}).pipe(
+      map(
+        userData => {
+         return userData;
+        }
+      )
+     );
   }
 
 }

@@ -37,9 +37,7 @@ export class LoginComponent implements OnInit {
         console.log('success login');
         this.invalidLogin = false
         localStorage.setItem('currentUser', JSON.stringify(this.username));
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-          this.router.navigate(['courses']);
-      });
+                this.router.navigate(['courses']);
       },
       error => {
         console.log('error login');
