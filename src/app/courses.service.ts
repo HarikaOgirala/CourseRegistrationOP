@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
@@ -54,6 +54,33 @@ export class CoursesService {
         userData => {
          return userData;
         }
+      )
+     );
+  }
+
+  registerCourse(courseNumber:string): Observable<any> {
+    this.authenticateService.getUserName
+            .pipe( first()) 
+            .subscribe((uname) => {
+                this.username = uname;
+            });
+    this.authenticateService.getPassword
+            .pipe( first()) 
+            .subscribe((pw) => {
+                this.password = pw;
+            });
+    console.log(this.username);
+    console.log(this.password);
+    const params = new HttpParams()
+    .set('id', courseNumber);
+    
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
+    const options = { params: params, headers: headers };
+    return this.http.get(this.baseUrl.concat('/register'), options).pipe(
+      map(
+        userData => {
+         return userData;
+        },
       )
      );
   }

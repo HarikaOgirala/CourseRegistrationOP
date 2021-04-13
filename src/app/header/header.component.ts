@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit{
 
   isLoggedIn$!: Observable<boolean>; 
 
-  constructor(public loginService:AuthenticationService) { 
+  constructor(private router: Router,public loginService:AuthenticationService) { 
     console.log('in header');
   }
 
@@ -23,6 +23,12 @@ export class HeaderComponent implements OnInit{
 
   handleLogout() {
     this.loginService.logOut();
+  }
+
+  backToHome() {
+    this.isLoggedIn$ = this.loginService.isLoggedIn;
+    this.router.navigate(['courses']);
+    console.log('menu ->' + this.isLoggedIn$);
   }
 
 }
