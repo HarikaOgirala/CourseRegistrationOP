@@ -7,12 +7,14 @@ import { CreateCoursesComponent } from './create-courses/create-courses.componen
 import { CoursesDetailsComponent } from './courses-details/courses-details.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UpdateCoursesComponent } from './update-courses/update-courses.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
 import { RedirectComponentComponent } from './redirect-component/redirect-component.component';
-import { LoginListComponent } from './login-list/login-list.component';
+import { CoursesService } from './courses.service';
+import { ErrorInterceptor } from './service/errorInterceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CoursopIframeComponent } from './coursop-iframe/coursop-iframe.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,11 @@ import { LoginListComponent } from './login-list/login-list.component';
     CreateCoursesComponent,
     CoursesDetailsComponent,
     CoursesListComponent,
-    UpdateCoursesComponent,
     LoginComponent,
     LogoutComponent,
     HeaderComponent,
     RedirectComponentComponent,
-    LoginListComponent
+    CoursopIframeComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,12 @@ import { LoginListComponent } from './login-list/login-list.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

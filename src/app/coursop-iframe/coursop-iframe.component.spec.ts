@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginListComponent } from './login-list.component';
+import { CoursopIframeComponent } from './coursop-iframe.component';
 
-describe('LoginListComponent', () => {
-  let component: LoginListComponent;
-  let fixture: ComponentFixture<LoginListComponent>;
+describe('CoursopIframeComponent', () => {
+  let component: CoursopIframeComponent;
+  let fixture: ComponentFixture<CoursopIframeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginListComponent ]
+      declarations: [ CoursopIframeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginListComponent);
+    fixture = TestBed.createComponent(CoursopIframeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,7 +10,7 @@ export class RedirectComponentComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    window.location.href = 'http://localhost:8081/courseop/'
+    window.location.href = 'http://localhost:8083/courseop/'
   }
 
 }
