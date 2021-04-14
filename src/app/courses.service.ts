@@ -80,7 +80,7 @@ export class CoursesService {
       map(
         userData => {
          return userData;
-        },
+        }
       )
      );
   }

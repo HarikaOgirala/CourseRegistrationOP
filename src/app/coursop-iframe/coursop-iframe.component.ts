@@ -12,6 +12,9 @@ export class CoursopIframeComponent implements OnInit {
 
   courseOpLink!: SafeResourceUrl;
   courseNumber= '';
+  registrationResponse = '';
+  errorMessage ='';
+  invalidRequest=false;
 
   constructor(private domSanitizer:DomSanitizer, private coursesService :CoursesService) { }
 
@@ -21,7 +24,15 @@ export class CoursopIframeComponent implements OnInit {
 
   registerCourse() {
     console.log(this.courseNumber);
-    this.coursesService.registerCourse(this.courseNumber);
+    this.coursesService.registerCourse(this.courseNumber).subscribe(data => {
+      console.log(data)
+      this.registrationResponse = data;
+    }, error => {
+        console.log(error);
+        this.errorMessage =error;
+        this.invalidRequest=true;
+       }
+    );
 
   }
 
