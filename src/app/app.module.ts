@@ -15,6 +15,9 @@ import { CoursesService } from './courses.service';
 import { ErrorInterceptor } from './service/errorInterceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoursopIframeComponent } from './coursop-iframe/coursop-iframe.component';
+import { NgxSpinnerModule } from "ngx-spinner"; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2CompleterModule } from 'ng2-completer';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { CoursopIframeComponent } from './coursop-iframe/coursop-iframe.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
+    Ng2CompleterModule
   ],
   providers: [
     {
