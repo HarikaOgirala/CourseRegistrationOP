@@ -1,8 +1,19 @@
-<div class="panel panel-default">
+<div class="panel panel-default"  style="height:500px; overflow-y: scroll;">
     <div class="panel-heading">
       <h2>Course Registration List</h2>
     </div>
-    <div class="panel-body">
+    <div class="form-group">
+      <div class="btn-group btn-group-toggle">
+        <label class="btn btn-secondary">
+          <input type="radio" (click)="reloadDataWithStatus('ALL')" autocomplete="off" checked [(ngModel)]="status" value="ALL"> All
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" (click)="reloadDataWithStatus('COMPLETED')"  autocomplete="off" [(ngModel)]="status" value="COMPLETED"> Completed
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" (click)="reloadDataWithStatus('REGISTERED')"  autocomplete="off"  [(ngModel)]="status" value="REGISTERED"> Registered
+        </label>
+      </div>
       <table class="table table-striped">
         <thead>
           <tr>

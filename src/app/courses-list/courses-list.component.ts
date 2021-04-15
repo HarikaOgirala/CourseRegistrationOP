@@ -13,6 +13,7 @@ export class CoursesListComponent implements OnInit {
   courses!: Observable<Courses[]>;
   
   isLoggedIn$!: Observable<boolean>;
+  status='ALL';
 
   constructor(private coursesService: CoursesService,
     private router: Router) {}
@@ -23,7 +24,12 @@ export class CoursesListComponent implements OnInit {
   }
 
   reloadData() {
-    this.courses = this.coursesService.getCoursesList();
+    console.log(this.status);
+    this.courses = this.coursesService.getCoursesList(this.status);
+  }
+  reloadDataWithStatus(status :string) {
+    console.log(status);
+    this.courses = this.coursesService.getCoursesList(status);
   }
 
   deleteCourses(id: number) {

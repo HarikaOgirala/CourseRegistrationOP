@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
-import { AuthenticationService } from './service/authentication.service';
+import { AuthenticationService, User } from './service/authentication.service';
 
 
 @Injectable({
@@ -15,9 +15,10 @@ export class CoursesService {
 
   username :String = '';
   password :String = '';
-  
  
-  constructor(private http: HttpClient, private authenticateService : AuthenticationService) { }
+  constructor(private http: HttpClient, private authenticateService : AuthenticationService) { 
+  
+  }
 
   getCourses(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
@@ -35,7 +36,7 @@ export class CoursesService {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-  getCoursesList(): Observable<any> {
+  getCoursesList(status :string): Observable<any> {
     this.authenticateService.getUserName
             .pipe( first()) 
             .subscribe((uname) => {
@@ -48,11 +49,34 @@ export class CoursesService {
             });
     console.log(this.username);
     console.log(this.password);
+    console.log(status);
+    
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
-    return this.http.get(this.baseUrl,{headers}).pipe(
+    return this.http.get(`${this.baseUrl}/status/${status}`,{headers}).pipe(
       map(
         userData => {
          return userData;
+        }
+      )
+     );
+  }
+
+  getAllCoursesNames(): Observable<any> {
+    this.authenticateService.getUserName
+            .pipe( first()) 
+            .subscribe((uname) => {
+                this.username = uname;
+            });
+    this.authenticateService.getPassword
+            .pipe( first()) 
+            .subscribe((pw) => {
+                this.password = pw;
+            });    
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
+    return this.http.get(`${this.baseUrl}/all`,{headers}).pipe(
+      map(
+        userData => {
+           return userData;
         }
       )
      );
