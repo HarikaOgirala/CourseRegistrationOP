@@ -12,9 +12,11 @@ import { AuthenticationService, User } from './service/authentication.service';
 export class CoursesService {
 
   private baseUrl = 'http://localhost:8080/registrationop/api/v1/courses';
+  private forgotPasswordUrl = 'http://localhost:8080/registrationop/api/v3/login'
 
   username :String = '';
   password :String = '';
+  save: any;
  
   constructor(private http: HttpClient, private authenticateService : AuthenticationService) { 
   
@@ -36,6 +38,14 @@ export class CoursesService {
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
     return this.http.delete(`${this.baseUrl}/${id}`, {headers});
   }
+
+  forgotPassword(email: Object): Observable<Object> {
+    return this.http.post(`${this.forgotPasswordUrl}`, email);
+  }
+  resetPassword(password: Object, confirmedPassword: Object): Observable<Object> {
+    return this.http.post(`${this.forgotPasswordUrl}`, password, confirmedPassword);
+  }
+  
 
   getCoursesList(status :string): Observable<any> {
     this.authenticateService.getUserName
