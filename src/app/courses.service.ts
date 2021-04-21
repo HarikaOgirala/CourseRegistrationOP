@@ -12,6 +12,7 @@ import { AuthenticationService, User } from './service/authentication.service';
 export class CoursesService {
 
   private baseUrl = 'http://localhost:8080/registrationop/api/v1/courses';
+  private forgotPasswordUrl = 'http://localhost:8080/registrationop/api/v3/login';
 
   username :String = '';
   password :String = '';
@@ -37,8 +38,7 @@ export class CoursesService {
     return this.http.delete(`${this.baseUrl}/${id}`, {headers});
   }
 
-<<<<<<< Updated upstream
-=======
+
   forgotPassword(email: Object): Observable<Object> {
     return this.http.post(`${this.forgotPasswordUrl}/forgot_password`, email);
   }
@@ -47,7 +47,6 @@ export class CoursesService {
   }
   
 
->>>>>>> Stashed changes
   getCoursesList(status :string): Observable<any> {
     this.authenticateService.getUserName
             .pipe( first()) 
