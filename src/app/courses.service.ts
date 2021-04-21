@@ -33,7 +33,8 @@ export class CoursesService {
   }
 
   deleteCourses(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
+    return this.http.delete(`${this.baseUrl}/${id}`, {headers});
   }
 
   getCoursesList(status :string): Observable<any> {
@@ -47,10 +48,7 @@ export class CoursesService {
             .subscribe((pw) => {
                 this.password = pw;
             });
-    console.log(this.username);
-    console.log(this.password);
-    console.log(status);
-    
+
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
     return this.http.get(`${this.baseUrl}/status/${status}`,{headers}).pipe(
       map(
@@ -101,6 +99,35 @@ export class CoursesService {
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
     const options = { params: params, headers: headers };
     return this.http.get(this.baseUrl.concat('/register'), options).pipe(
+      map(
+        userData => {
+         return userData;
+        }
+      )
+     );
+  }
+  
+
+  
+  sendEmail(courseNumber:string): Observable<any> {
+    this.authenticateService.getUserName
+            .pipe( first()) 
+            .subscribe((uname) => {
+                this.username = uname;
+            });
+    this.authenticateService.getPassword
+            .pipe( first()) 
+            .subscribe((pw) => {
+                this.password = pw;
+            });
+    console.log(this.username);
+    console.log(this.password);
+    const params = new HttpParams()
+    .set('id', courseNumber);
+    
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa( this.username + ':' +  this.password) });
+    const options = { params: params, headers: headers };
+    return this.http.get(this.baseUrl.concat('/sendmail'), options).pipe(
       map(
         userData => {
          return userData;
