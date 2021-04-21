@@ -1,5 +1,8 @@
 <iframe [src]="courseOpLink" width="100%" height="500"></iframe>
-<div class="alert alert-warning alert-dismissible fade in text-center" *ngIf='invalidRequest'>{{errorMessage}}</div>
+<div class="alert alert-warning alert-dismissible fade in text-center" *ngIf='invalidRequest'>{{errorMessage}}
+  <span style="display:inline-block; width: 4%;"></span>
+  <a (click)="sendEmail()" *ngIf='emailLink'><Strong>Request for override</Strong></a>
+</div>
 <div class="center-block">
   <input type="text" class="form-control" name="courseNumber" [(ngModel)]="courseNumber"
     placeholder="Enter course number" id="courseNumber" list="courseNumberList">

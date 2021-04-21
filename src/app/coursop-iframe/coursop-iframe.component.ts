@@ -20,6 +20,8 @@ export class CoursopIframeComponent implements OnInit {
   invalidRequest=false;
   isLoggedIn$!: Observable<boolean>; 
   courses: string[] = [];
+  emailLink = '';
+  emailResponse =false;
   
   
   constructor(private domSanitizer:DomSanitizer, private coursesService :CoursesService,
@@ -48,6 +50,29 @@ export class CoursopIframeComponent implements OnInit {
         console.log(error);
         this.errorMessage =error;
         this.invalidRequest=true;
+        if(this.errorMessage.includes('PreRequisites')) {
+            this.emailLink = 'true';
+        }
+        else {
+          this.emailLink='';
+        }
+       }
+    );
+
+  }
+
+  sendEmail() {  
+    this.SpinnerService.show();
+    this.coursesService.sendEmail(this.courseNumber).subscribe(data => {
+      this.SpinnerService.hide(); 
+      this.emailResponse = data;
+      this.isLoggedIn$ = this.loginService.isLoggedIn;
+      this.errorMessage = 'Email Sent Successfully';
+      this.emailLink = '';
+    }, error => { 
+      this.SpinnerService.hide(); 
+        console.log(error);
+        this.errorMessage =error;
        }
     );
 
