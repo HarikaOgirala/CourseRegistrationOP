@@ -37,6 +37,17 @@ export class CoursesService {
     return this.http.delete(`${this.baseUrl}/${id}`, {headers});
   }
 
+<<<<<<< Updated upstream
+=======
+  forgotPassword(email: Object): Observable<Object> {
+    return this.http.post(`${this.forgotPasswordUrl}/forgot_password`, email);
+  }
+  resetPassword(email: Object): Observable<Object> {
+    return this.http.post(`${this.forgotPasswordUrl}/reset_password`, email);
+  }
+  
+
+>>>>>>> Stashed changes
   getCoursesList(status :string): Observable<any> {
     this.authenticateService.getUserName
             .pipe( first()) 
