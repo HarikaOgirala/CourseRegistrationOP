@@ -12,10 +12,13 @@ import { AuthenticationService, User } from './service/authentication.service';
 export class CoursesService {
 
   private baseUrl = 'http://localhost:8080/registrationop/api/v1/courses';
+
   private forgotPasswordUrl = 'http://localhost:8080/registrationop/api/v3/login';
+
 
   username :String = '';
   password :String = '';
+  save: any;
  
   constructor(private http: HttpClient, private authenticateService : AuthenticationService) { 
   
@@ -45,6 +48,7 @@ export class CoursesService {
   resetPassword(email: Object): Observable<Object> {
     return this.http.post(`${this.forgotPasswordUrl}/reset_password`, email);
   }
+ 
   
 
   getCoursesList(status :string): Observable<any> {

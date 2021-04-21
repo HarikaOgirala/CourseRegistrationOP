@@ -3,25 +3,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesService } from 'src/app/courses.service';
 import { ForgotPassword } from 'src/app/forgotpassword';
 
+
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.css']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
 
   forgotPassword: ForgotPassword = new ForgotPassword();
   submitted = false;
-  token ='';
 
   constructor(private coursesService: CoursesService,
-    private router: Router,
-    private activatedRoute : ActivatedRoute) { 
-      this.activatedRoute.queryParams.subscribe(params => {
-       this.token = params['token'];
-    });
-    }
-
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -32,10 +26,8 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   save() {
-
-    this.forgotPassword.token =this.token;
     this.coursesService
-    .resetPassword(this.forgotPassword).subscribe((data: any) => {
+    .forgotPassword(this.forgotPassword).subscribe((data: any) => {
       console.log(data)
       this.forgotPassword = new ForgotPassword();
       this.gotoList();
@@ -49,7 +41,8 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/resetpassword']);
   }
-
 }
+
+

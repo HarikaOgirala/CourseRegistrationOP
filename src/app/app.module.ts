@@ -18,6 +18,8 @@ import { CoursopIframeComponent } from './coursop-iframe/coursop-iframe.componen
 import { NgxSpinnerModule } from "ngx-spinner"; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2CompleterModule } from 'ng2-completer';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { Ng2CompleterModule } from 'ng2-completer';
     LogoutComponent,
     HeaderComponent,
     RedirectComponentComponent,
-    CoursopIframeComponent
+    CoursopIframeComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
