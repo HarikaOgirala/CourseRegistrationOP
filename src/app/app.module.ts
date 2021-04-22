@@ -20,6 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2CompleterModule } from 'ng2-completer';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    Ng2CompleterModule
+    Ng2CompleterModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

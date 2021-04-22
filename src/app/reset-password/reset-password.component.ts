@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CoursesService } from 'src/app/courses.service';
-import { ForgotPassword } from 'src/app/forgotpassword';
+import {FormBuilder, FormGroup,Validators} from "@angular/forms";
+import { PasswordChecker } from './password-validator';
+
 
 @Component({
   selector: 'app-reset-password',
@@ -10,46 +10,34 @@ import { ForgotPassword } from 'src/app/forgotpassword';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  forgotPassword: ForgotPassword = new ForgotPassword();
+  resetForm!: FormGroup;
   submitted = false;
-  token ='';
 
-  constructor(private coursesService: CoursesService,
-    private router: Router,
-    private activatedRoute : ActivatedRoute) { 
-      this.activatedRoute.queryParams.subscribe(params => {
-       this.token = params['token'];
+  constructor(private formbuilder: FormBuilder){}
+
+  ngOnInit(){
+
+    this.resetForm = this.formbuilder.group({
+      password: ['',[Validators.required]],
+      confirmPassword: ['',Validators.required]
+    }, {
+      validators: PasswordChecker('password','confirmPassword')
     });
-    }
-
-
-  ngOnInit() {
   }
 
-  newCourses(): void {
-    this.submitted = false;
-    this.forgotPassword = new ForgotPassword();
+  get h(){
+    return this.resetForm.controls;
   }
 
-  save() {
-
-    this.forgotPassword.token =this.token;
-    this.coursesService
-    .resetPassword(this.forgotPassword).subscribe((data: any) => {
-      console.log(data)
-      this.forgotPassword = new ForgotPassword();
-      this.gotoList();
-    }, 
-      (    error: any) => console.log(error));
-  }
-
-  onSubmit() {
+  onSubmit(){
     this.submitted = true;
-    this.save();    
+    if(this.resetForm.invalid){
+      return;
+    }
   }
 
-  gotoList() {
-    this.router.navigate(['/login']);
+  onReset(){
+    this.submitted=false;
+    this.resetForm.reset();
   }
-
 }
