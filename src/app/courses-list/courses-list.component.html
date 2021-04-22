@@ -19,11 +19,6 @@
           <tr>
             <th>Course Number</th>
             <th>Course Name</th>
-            <th>Semester</th>
-            <th>Type</th>
-            <th>Prerequisites</th>
-            <th>Part of Day</th>
-            <th>Time</th>
             <th>Day</th>
             <th>Faculty</th>
             <th>Actions</th>
@@ -33,14 +28,9 @@
           <tr *ngFor="let courses of courses | async">
             <td>{{courses.courseNumber}}</td>
             <td>{{courses.courseName}}</td>
-            <td>{{courses.semester}}</td>
-            <td>{{courses.type}}</td>
-            <td>{{courses.preRequisites}}</td>
-            <td>{{courses.partOfDay}}</td>
-            <td>{{courses.time}}</td>
             <td>{{courses.day}}</td>
             <td>{{courses.faculty}}</td>
-            <td><button (click)="deleteCourses(courses.id)" class="btn btn-danger">Deregister</button>
+            <td><button (click)="confirmDelete(courses.id)" class="btn btn-danger">Deregister</button>
                 <button (click)="coursesDetails(courses.id)" class="btn btn-info" style="margin-left:auto">Details</button>
             </td>
           </tr>

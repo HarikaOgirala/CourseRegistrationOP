@@ -78,4 +78,10 @@ export class CoursopIframeComponent implements OnInit {
 
   }
 
+  confirmEmail() {
+    if(confirm("you are about to send an Email to your Advisor saying\ncheck your eligibility to register for this course : "+this.courseNumber +"\nDo you want to continue?")) {
+      this.sendEmail();
+    }
+  }
+
 }

@@ -1,14 +1,15 @@
 <header>
   <nav class="navbar navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand"><Strong>CourseOp</Strong></a>
+    
+      <div class="navbar-header" style="font-size: 20px; color:lightgray; font-family:Arial, Helvetica, sans-serif; ">
+        <Strong>C . R . O . P</Strong> <p style="font-size: 10px;"> Course Registration Operations Portal</p>
       </div>
+      <div class="container" > 
       <div class="navbar-header">
         <a (click) ="backToHome()"  class="navbar-brand" *ngIf="isLoggedIn$ | async"><Strong>Home</Strong></a>
       </div>
-      <div class="nav navbar-nav navbar-right input-group-btn">
-        <button (click) ="handleLogout()" role="button" class="btn btn-link" *ngIf="isLoggedIn$ | async"><strong>Logout</strong></button>
+      <div class="navbar-right">
+        <a (click) ="handleLogout()" role="button" class="navbar-brand" *ngIf="isLoggedIn$ | async"><strong>Logout</strong></a>
      </div>
     </div>
   </nav>

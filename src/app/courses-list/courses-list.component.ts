@@ -50,4 +50,10 @@ export class CoursesListComponent implements OnInit {
     this.router.navigate(['update',id]);
   }
 
+  confirmDelete(id: number) {
+    if(confirm("Are you sure to de-register this course ?")) {
+      this.deleteCourses(id);
+    }
+  }
+
 }
