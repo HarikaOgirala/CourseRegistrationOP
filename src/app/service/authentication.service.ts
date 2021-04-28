@@ -65,6 +65,7 @@ export class AuthenticationService {
     this.loggedIn.next(false);
     this.userName.next('');
     this.userName.next('');
+    console.log('logout usrnam'+sessionStorage.getItem('username'));
     this.router.navigate(['/login']);
   }
 }
