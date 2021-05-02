@@ -31,7 +31,7 @@ export class CoursopIframeComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.courseOpLink = this.domSanitizer.bypassSecurityTrustResourceUrl('http://localhost:8083/courseop/');
+    this.courseOpLink = this.domSanitizer.bypassSecurityTrustResourceUrl('http://ec2-3-136-11-200.us-east-2.compute.amazonaws.com:8000/courseop/');
     this.coursesService.getAllCoursesNames().subscribe( data => this.courses = data as string[]);
   }
 

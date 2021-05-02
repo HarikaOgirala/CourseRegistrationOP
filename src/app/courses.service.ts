@@ -11,9 +11,9 @@ import { AuthenticationService, User } from './service/authentication.service';
 })
 export class CoursesService {
 
-  private baseUrl = 'http://localhost:8080/registrationop/api/v1/courses';
+  private baseUrl = 'http://registrationop-env.eba-8zkgfhg2.us-east-2.elasticbeanstalk.com/registrationop/api/v1/courses';
 
-  private forgotPasswordUrl = 'http://localhost:8080/registrationop/api/v3/login';
+  private forgotPasswordUrl = 'http://registrationop-env.eba-8zkgfhg2.us-east-2.elasticbeanstalk.com/registrationop/api/v3/login';
 
 
   username :String = '';

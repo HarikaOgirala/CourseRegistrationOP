@@ -15,7 +15,7 @@ export class User{
 })
 export class AuthenticationService {
 
-  private loginUrl = 'http://localhost:8080/registrationop/api/v2/login';
+  private loginUrl = 'http://registrationop-env.eba-8zkgfhg2.us-east-2.elasticbeanstalk.com/registrationop/api/v2/login';
 
   private loggedIn = new BehaviorSubject<boolean>(false);
 
