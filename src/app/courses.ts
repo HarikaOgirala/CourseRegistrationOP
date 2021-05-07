@@ -12,5 +12,6 @@ export class Courses {
     day!: string;
     faculty!: string;
     active!: boolean;
+    status!:string;
 }
 

@@ -30,7 +30,8 @@
             <td>{{courses.courseName}}</td>
             <td>{{courses.day}}</td>
             <td>{{courses.faculty}}</td>
-            <td><button (click)="confirmDelete(courses.id)" class="btn btn-danger">Deregister</button>
+            <td>
+              <button (click)="confirmDelete(courses.id)" *ngIf="courses.status === 'REGISTERED'" class="btn btn-danger">Deregister</button>
                 <button (click)="coursesDetails(courses.id)" class="btn btn-info" style="margin-left:auto">Details</button>
             </td>
           </tr>
